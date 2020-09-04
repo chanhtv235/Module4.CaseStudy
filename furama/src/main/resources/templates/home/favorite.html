@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Favorite Services</h2>
+    <table class="table table-dark table-hover">
+        <thead>
+        <tr>
+            <th>Tên dịch vụ</th>
+            <th>Diện tích sử dụng</th>
+            <th>Giá dịch vu</th>
+            <th>Số tầng</th>
+            <th>Số người tối đa</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="dichvu:${favorite}">
+            <td th:text="${dichvu.getTenDichVu()}"></td>
+            <td th:text="${dichvu.getDienTich()}"></td>
+            <td th:text="${dichvu.getChiPhiThu()}"></td>
+            <td th:text="${dichvu.getSoTang()}"></td>
+            <td th:text="${dichvu.getSoNguoiToiDa()}"></td>
+        </tr>
+        </tbody>
+    </table>
+    <form method="get" th:action="@{/}">
+        <input type="submit" value="Back to Home">
+    </form>
+
+</div>
+
+</body>
+</html>

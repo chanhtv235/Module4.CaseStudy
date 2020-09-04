@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Booking Service</h2>
+    <form method="post" th:action="@{/booking}">
+        <div class="form-group">
+            <input type="text" class="form-control"   th:value="${dichvu.getId()}" name="id" hidden>
+        </div>
+
+        <div class="form-group">
+            <label for="tendichvu">Tên dich vụ:</label>
+            <input type="text" class="form-control" id="tendichvu"  th:value="${dichvu.getTenDichVu()}" name="tendichvu" disabled>
+        </div>
+        <div class="form-group">
+            <label for="dientich">Diện tích sử dụng:</label>
+            <input type="text" class="form-control" id="dientich" th:value="${dichvu.getDienTich()}+m2" name="dientich" disabled>
+        </div>
+        <div class="form-group">
+            <label for="giadichvu">Giá dịch vụ:</label>
+            <input type="text" class="form-control" id="giadichvu" th:value="${dichvu.getChiPhiThu()}" name="giadichvu" disabled>
+        </div>
+        <div class="form-group">
+            <label for="sotang">Số tầng:</label>
+            <input type="text" class="form-control" id="sotang" th:value="${dichvu.getSoTang()}" name="sotang" disabled>
+        </div>
+        <div class="form-group">
+            <label for="songuoitoida">Số người tối đa:</label>
+            <input type="text" class="form-control" id="songuoitoida" th:value="${dichvu.getSoNguoiToiDa()}" name="songuoitoda" disabled>
+        </div>
+        <div class="form-group">
+            <label for="ngaybatdau">Ngày bắt đầu:</label>
+            <input type="date" class="form-control" id="ngaybatdau"  name="ngaybatdau" >
+        </div>
+        <div class="form-group">
+            <label for="ngayketthuc">Ngày kết thúc:</label>
+            <input type="date" class="form-control" id="ngayketthuc"  name="ngayketthuc">
+        </div>
+        <button type="submit" class="btn btn-primary">Save</button>
+    </form>
+</div>
+
+</body>
+</html>

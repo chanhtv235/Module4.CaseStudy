@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <h2>Thông tin khach hàng</h2>
+    <form th:object="${khachhang}" method="post" th:action="@{/dangky}">
+        <div class="form-group">
+            <label for="tenkhachhang">Tên khách hàng:</label>
+            <p th:if="${#fields.hasErrors('hoTen')}" th:errors="*{hoTen}" class="text-danger"></p>
+            <input type="text" class="form-control" id="tenkhachhang"  th:field="*{hoTen}" name="tenkhachhang" >
+        </div>
+        <div class="form-group">
+            <label for="ngaysinh">Ngày sinh:</label>
+            <input type="date" class="form-control" id="ngaysinh" th:field="*{ngaySinh}" name="ngaysinh" >
+        </div>
+        <div class="form-group">
+            <label for="CMND">Số CMND:</label>
+            <p th:if="${#fields.hasErrors('CMND')}" th:errors="*{CMND}" class="text-danger"></p>
+            <input type="text" class="form-control" id="CMND" th:field="*{CMND}" name="CMND" >
+        </div>
+        <div class="form-group">
+            <label for="sodienthoai">Số điện thoại:</label>
+            <p th:if="${#fields.hasErrors('soDienThoai')}" th:errors="*{soDienThoai}" class="text-danger"></p>
+            <input type="text" class="form-control" id="sodienthoai" th:field="*{soDienThoai}" name="sodienthoai" >
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></p>
+            <input type="text" class="form-control" id="email"th:field="*{email}"  name="email" >
+        </div>
+        <div class="form-group">
+            <label for="diachi">Địa chỉ:</label>
+            <p th:if="${#fields.hasErrors('diaChi')}" th:errors="*{diaChi}" class="text-danger"></p>
+            <input type="text" class="form-control" id="diachi"th:field="*{diaChi}"  name="diachi" >
+        </div>
+
+
+        <button type="submit" class="btn btn-primary">Đăng ký</button>
+    </form>
+</div>
+
+</body>
+</html>

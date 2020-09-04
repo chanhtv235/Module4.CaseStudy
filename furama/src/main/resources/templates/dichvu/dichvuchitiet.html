@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Furama</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+    <style>
+        /* Remove the navbar's default margin-bottom and rounded borders */
+        .navbar {
+            margin-bottom: 0;
+            border-radius: 0;
+        }
+
+        /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+        .row.content {height: auto}
+
+        /* Set gray background color and 100% height */
+        .sidenav {
+            padding-top: 20px;
+            background-color:  #b8e89c;
+            height: 100%;
+        }
+
+        /* Set black background color, white text and some padding */
+        footer {
+            background-color: #210087;
+            color: white;
+            padding: 15px;
+        }
+
+        /* On small screens, set height to 'auto' for sidenav and grid */
+        @media screen and (max-width: 767px) {
+            .sidenav {
+                height: auto;
+                padding: 15px;
+            }
+            .row.content {height:1200px;}
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" style="color: #b8e89c">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">Logo</a>
+        </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li><a th:href="@{/dangkykhachhang}"><span class="glyphicon glyphicon-log-in"></span> Đăng ký</a></li>
+                <li><a href="#"><span class="glyphicon glyphicon-log-in"></span> Đăng Nhập</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container-fluid" >
+    <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Dịch vụ</a></li>
+        <li><a th:href="@{/favoritePage}">Favorite Service</a></li>
+        <li><a th:href="@{/history}">History Booking</a></li>
+    </ul>
+</div>
+
+<div class="container-fluid text-center">
+    <div class="row content">
+        <div class="col-sm-2 sidenav">
+            <th:block th:each="dichvu:${dichvuList}">
+                <h3 th:text="${dichvu.getTenDichVu()}"></h3>
+                <p th:text="${dichvu.getChiPhiThu()}+' (USD)'"></p>
+                <p th:text="${dichvu.getDienTich()}+' (m2)'"></p>
+                <a th:href="@{'/dichvu/'+${dichvu.getId()}}">Chi tiết</a>
+                <a th:href="@{'/booking/'+${dichvu.getId()}}"> Booking</a>
+            </th:block>
+        </div>
+        <div class="col-sm-8 text-left" style="alignment: center">
+
+                    <h3 th:text="${dichvuchitiet.getTenDichVu()}"></h3>
+                    <table style="color: coral"  >
+                        <tr>
+                            <td> Trạng thái </td>
+                            <td th:text="${dichvuchitiet.getTrangThai()}"></td>
+                        </tr>
+                        <tr>
+                            <td> Số tầng </td>
+                            <td th:text="${dichvuchitiet.getSoTang()}"></td>
+                        </tr>
+                        <tr>
+                            <td> Diện tích sử dụng m2) </td>
+                            <td th:text="${dichvuchitiet.getDienTich()}"></td>
+                        </tr>
+
+                        <tr>
+                            <td> Số người tối đa </td>
+                            <td th:text="${dichvuchitiet.getSoNguoiToiDa()}"></td>
+                        </tr>
+                        <tr>
+                            <td> Giá (USD) </td>
+                            <td th:text="${dichvuchitiet.getChiPhiThu()}"></td>
+                        </tr>
+                    </table>
+                    <div class="col-sm-8 text-left" style="alignment: center">
+                        <a th:href="@{'/'}">Hủy</a>
+                        <a th:href="@{'/booking/'+${dichvuchitiet.getId()}}"> Booking</a>
+                    </div>
+
+        </div>
+    </div>
+</div>
+<footer class="container-fluid text-center">
+    <p>Case Study </p>
+</footer>
+</body>
+</html>
